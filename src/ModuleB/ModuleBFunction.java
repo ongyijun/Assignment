@@ -5,10 +5,12 @@
  */
 package ModuleB;
 
+import domain.DeliveryMan;
+
 /**
  *
  * @author MY
  */
 public class ModuleBFunction {
-
+        
 }

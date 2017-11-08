@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package ModuleB;
+
 /**
  *
  * @author MY
  */
 public class ModuleBFunction {
-        
+
 }

@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 package ModuleB;
-
 /**
  *
- * @author ong
+ * @author MY
  */
-public class NewClass {
-    
+public class ModuleBFunction {
+        
 }

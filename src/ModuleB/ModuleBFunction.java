@@ -25,6 +25,7 @@ public class ModuleBFunction {
 
     public ModuleBFunction() {
     }
+    
     public void DisplayOwnerRegistration(int TotalOwner){
         String Position = "Owner";
         double Salary = 0;
@@ -42,9 +43,9 @@ public class ModuleBFunction {
         System.out.print("Enter New Owner Email: ");
         String Email = s.nextLine();
         System.out.print("Enter Total Annual Sales: ");
-        double annnualSale = s.nextDouble();
+        double annualSale = s.nextDouble();
         s.nextLine();
-        Owner owner = new Owner(annnualSale, ID, Name, Email, PhNo, Gender, Adds, Email, Position, Salary);
+        Owner owner = new Owner(annualSale,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
         owner.calculateSalary();
         AddNewOwner(owner);
     }
@@ -70,7 +71,8 @@ public class ModuleBFunction {
         System.out.print("Enter New Staff Salary: ");
         Salary = s.nextDouble();
         s.nextLine();
-        HR hr = new HR(TotalStaffManaged, ID, Name, Email, PhNo, Gender, Adds, Email, Position, Salary);
+        HR hr = new HR(TotalStaffManaged,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
+        hr.calculateSalary();
         AddNewHR(hr);
     }
 
@@ -91,10 +93,11 @@ public class ModuleBFunction {
         System.out.print("Enter New Delivery Man Email: ");
         String Email = s.nextLine();
         Position = "Delivery Man";
-        System.out.print("Enter New Staff Salary: ");
+        System.out.print("Enter New Delivery Man Basic Salary: ");
         Salary = s.nextDouble();
         s.nextLine();
-        DeliveryMan DM = new DeliveryMan(0, ID, Name, Email, PhNo, Gender, Adds, Email, Position, Salary);
+        DeliveryMan DM = new DeliveryMan(0,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
+        DM.calculateSalary();
         AddNewDeliveryMan(DM);
     }
     
@@ -136,5 +139,4 @@ public class ModuleBFunction {
     public void setOwnerList(List<Owner> ownerList) {
         this.ownerList = ownerList;
     }
-
 }

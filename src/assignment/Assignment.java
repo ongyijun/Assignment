@@ -17,9 +17,9 @@ import java.util.Scanner;
  */
 public class Assignment {
 
-    ModuleBFunction B = new ModuleBFunction();
-    List<DeliveryMan> DMList = B.getDeliveryMen();
-    List<Owner> ownerList = B.getOwnerList();
+    private ModuleBFunction B = new ModuleBFunction();
+    private List<DeliveryMan> DMList = B.getDeliveryMen();
+    private List<Owner> ownerList = B.getOwnerList();
 
     /**
      * @param args the command line arguments

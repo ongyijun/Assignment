@@ -20,8 +20,8 @@ public class Owner extends Employee {
         this.annualSale = annualSale;
     }
 
-    public Owner(double annualSale, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
-        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
+    public Owner(double annualSale, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary, TotalPay);
         this.annualSale = annualSale;
     }
 
@@ -36,6 +36,7 @@ public class Owner extends Employee {
     @Override
     public void calculateSalary() {
         super.setSalary(annualSale * 0.3);
+        super.setTotalPay(super.getSalary());
     }
 
 }

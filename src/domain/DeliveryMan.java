@@ -21,8 +21,8 @@ public class DeliveryMan extends Employee {
         this.TotalPendingDelivery = TotalPendingDelivery;
     }
 
-    public DeliveryMan(int TotalPendingDelivery, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
-        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
+    public DeliveryMan(int TotalPendingDelivery, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary, TotalPay);
         this.TotalPendingDelivery = TotalPendingDelivery;
     }
 
@@ -36,7 +36,7 @@ public class DeliveryMan extends Employee {
 
     @Override
     public void calculateSalary() {
-        super.setSalary( super.getSalary() + ws.getTotalDeliveredOrder() * 0.5);
+        super.setTotalPay(super.getSalary() + (ws.getTotalDeliveredOrder() * 0.5));
     }
 
 }

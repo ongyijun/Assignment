@@ -20,11 +20,12 @@ public abstract class Employee {
     private String StaffEmail;
     private String StaffPosition;
     private double Salary;
+    private double TotalPay;
 
     public Employee() {
     }
 
-    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
+    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
         this.StaffID = StaffID;
         this.StaffName = StaffName;
         this.StaffIC = StaffIC;
@@ -34,6 +35,7 @@ public abstract class Employee {
         this.StaffEmail = StaffEmail;
         this.StaffPosition = StaffPosition;
         this.Salary = Salary;
+        this.TotalPay = TotalPay;
     }
 
     public String getStaffID() {
@@ -106,6 +108,14 @@ public abstract class Employee {
 
     public void setSalary(double Salary) {
         this.Salary = Salary;
+    }
+
+    public double getTotalPay() {
+        return TotalPay;
+    }
+
+    public void setTotalPay(double TotalPay) {
+        this.TotalPay = TotalPay;
     }
 
     public abstract void calculateSalary();

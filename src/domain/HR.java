@@ -10,6 +10,7 @@ package domain;
  * @author MY
  */
 public class HR extends Employee {
+
     private int TotalStaffManaged;
 
     public HR() {
@@ -19,8 +20,8 @@ public class HR extends Employee {
         this.TotalStaffManaged = TotalStaffManaged;
     }
 
-    public HR(int TotalStaffManaged, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
-        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
+    public HR(int TotalStaffManaged, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary, TotalPay);
         this.TotalStaffManaged = TotalStaffManaged;
     }
 
@@ -34,7 +35,7 @@ public class HR extends Employee {
 
     @Override
     public void calculateSalary() {
-        super.setSalary( super.getSalary() + (TotalStaffManaged * 250));
+        super.setTotalPay(super.getSalary() + (TotalStaffManaged * 250));
     }
 
 }

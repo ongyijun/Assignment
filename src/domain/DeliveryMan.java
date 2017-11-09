@@ -9,33 +9,21 @@ package domain;
  *
  * @author MY
  */
-public class DeliveryMan extends Employee{
-    private double TotalDistance;
+public class DeliveryMan extends Employee {
+
     private int TotalPendingDelivery;
-    private int TotalDeliveredOrder;
-    
+    WorkStatus ws = new WorkStatus();
+
     public DeliveryMan() {
     }
 
-    public DeliveryMan(double TotalDistance, int TotalPendingDelivery, int TotalDeliveredOrder) {
-        this.TotalDistance = TotalDistance;
+    public DeliveryMan(int TotalPendingDelivery) {
         this.TotalPendingDelivery = TotalPendingDelivery;
-        this.TotalDeliveredOrder = TotalDeliveredOrder;
     }
 
-    public DeliveryMan(double TotalDistance, int TotalPendingDelivery, int TotalDeliveredOrder, String Name, String IC, String PhNo, char Gender, String Adds, String Email, String Position, double Salary) {
-        super(Name, IC, PhNo, Gender, Adds, Email, Position, Salary);
-        this.TotalDistance = TotalDistance;
+    public DeliveryMan(int TotalPendingDelivery, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
         this.TotalPendingDelivery = TotalPendingDelivery;
-        this.TotalDeliveredOrder = TotalDeliveredOrder;
-    }
-
-    public double getTotalDistance() {
-        return TotalDistance;
-    }
-
-    public void setTotalDistance(double TotalDistance) {
-        this.TotalDistance = TotalDistance;
     }
 
     public int getTotalPendingDelivery() {
@@ -46,17 +34,9 @@ public class DeliveryMan extends Employee{
         this.TotalPendingDelivery = TotalPendingDelivery;
     }
 
-    public int getTotalDeliveredOrder() {
-        return TotalDeliveredOrder;
-    }
-
-    public void setTotalDeliveredOrder(int TotalDeliveredOrder) {
-        this.TotalDeliveredOrder = TotalDeliveredOrder;
-    }
-
     @Override
     public void calculateSalary() {
-        super.setSalary( TotalDeliveredOrder * 0.5 );
+        super.setSalary( super.getSalary() + ws.getTotalDeliveredOrder() * 0.5);
     }
-    
+
 }

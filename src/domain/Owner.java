@@ -9,30 +9,20 @@ package domain;
  *
  * @author MY
  */
-public class Owner extends Employee{
-    private int TotalEmployee;
+public class Owner extends Employee {
+
     private double annualSale;
 
     public Owner() {
     }
 
-    public Owner(int TotalEmployee, double annualSale) {
-        this.TotalEmployee = TotalEmployee;
+    public Owner(double annualSale) {
         this.annualSale = annualSale;
     }
 
-    public Owner(int TotalEmployee, double annualSale, String Name, String IC, String PhNo, char Gender, String Adds, String Email, String Position, double Salary) {
-        super(Name, IC, PhNo, Gender, Adds, Email, Position, Salary);
-        this.TotalEmployee = TotalEmployee;
+    public Owner(double annualSale, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
         this.annualSale = annualSale;
-    }
-
-    public int getTotalEmployee() {
-        return TotalEmployee;
-    }
-
-    public void setTotalEmployee(int TotalEmployee) {
-        this.TotalEmployee = TotalEmployee;
     }
 
     public double getAnnualSale() {
@@ -42,10 +32,10 @@ public class Owner extends Employee{
     public void setAnnualSale(double annualSale) {
         this.annualSale = annualSale;
     }
-    
+
     @Override
     public void calculateSalary() {
         super.setSalary(annualSale * 0.3);
     }
-    
+
 }

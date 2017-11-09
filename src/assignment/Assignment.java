@@ -18,6 +18,8 @@ import java.util.Scanner;
 public class Assignment {
 
     ModuleBFunction B = new ModuleBFunction();
+    List<DeliveryMan> DMList = B.getDeliveryMen();
+    List<Owner> ownerList = B.getOwnerList();
 
     /**
      * @param args the command line arguments
@@ -106,7 +108,7 @@ public class Assignment {
         String selection = "0";
         System.out.println("Please Select The Option Below");
         System.out.println("1. Add New Delivery Man");
-        System.out.println("2. Currently None");
+        System.out.println("2. Add New Owner");
         System.out.println("3. Currently None");
         System.out.println("4. Log Out");
         while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4")) {
@@ -115,14 +117,23 @@ public class Assignment {
             switch (selection) {
                 case "1": {
                     System.out.println("1");
-                    B.DisplayRegistration();
-                    List<DeliveryMan> DMList = B.getDeliveryMen();
-                    System.out.printf("%s\n", DMList.get(0).getName());
+                    B.DisplayDeliveryManRegistration(DMList.size());
+                    DMList = B.getDeliveryMen();
+                    for (int i = 0; i < DMList.size(); i++) {
+                        System.out.printf("%s\n", DMList.get(i).getStaffID());
+                        System.out.printf("%s\n", DMList.get(i).getStaffPosition());
+                    }
                     HRMenu();
                     break;
                 }
                 case "2": {
                     System.out.println("2");
+                    B.DisplayOwnerRegistration(ownerList.size());
+                    ownerList = B.getOwnerList();
+                    for (int i = 0; i < ownerList.size(); i++) {
+                        System.out.printf("%s\n",ownerList.get(i).getSalary());
+                    }
+                    HRMenu();
                     break;
                 }
                 case "3": {

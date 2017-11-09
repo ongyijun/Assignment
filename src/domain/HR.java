@@ -9,10 +9,9 @@ package domain;
  *
  * @author MY
  */
-public class HR extends Employee{
+public class HR extends Employee {
     private int TotalStaffManaged;
-    
-    
+
     public HR() {
     }
 
@@ -20,8 +19,8 @@ public class HR extends Employee{
         this.TotalStaffManaged = TotalStaffManaged;
     }
 
-    public HR(int TotalStaffManaged, String Name, String IC, String PhNo, char Gender, String Adds, String Email, String Position, double Salary) {
-        super(Name, IC, PhNo, Gender, Adds, Email, Position, Salary);
+    public HR(int TotalStaffManaged, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary) {
+        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary);
         this.TotalStaffManaged = TotalStaffManaged;
     }
 
@@ -35,7 +34,7 @@ public class HR extends Employee{
 
     @Override
     public void calculateSalary() {
-        super.setSalary(2500 + (TotalStaffManaged * 250));
+        super.setSalary( super.getSalary() + (TotalStaffManaged * 250));
     }
-    
+
 }

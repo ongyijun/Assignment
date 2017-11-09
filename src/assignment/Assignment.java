@@ -25,8 +25,9 @@ public class Assignment {
     private List<Customer> customer = new ArrayList<>();
     private List<Orders> order = new ArrayList<>();
     private List<OrderDetail> orderdetail = new ArrayList<>();
-    private List<DeliveryMan> DMList = B.getDeliveryMen();
-    private List<Owner> ownerList = B.getOwnerList();
+    private List<DeliveryMan> DMList = new ArrayList<>();;
+    private List<Owner> ownerList = new ArrayList<>();
+    private List<HR> HRList = new ArrayList<>();
   
     /**
      * @param args the command line arguments
@@ -116,14 +117,14 @@ public class Assignment {
         System.out.println("Please Select The Option Below");
         System.out.println("1. Add New Delivery Man");
         System.out.println("2. Add New Owner");
-        System.out.println("3. Currently None");
-        System.out.println("4. Log Out");
+        System.out.println("3. Add New HR");
+        System.out.println("4. Update Delivery Man Status");
+        System.out.println("5. Log Out");
         while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4")) {
             System.out.print("Option: ");
             selection = s.next();
             switch (selection) {
                 case "1": {
-                    System.out.println("1");
                     B.DisplayDeliveryManRegistration(DMList.size());
                     DMList = B.getDeliveryMen();
                     for (int i = 0; i < DMList.size(); i++) {
@@ -134,7 +135,6 @@ public class Assignment {
                     break;
                 }
                 case "2": {
-                    System.out.println("2");
                     B.DisplayOwnerRegistration(ownerList.size());
                     ownerList = B.getOwnerList();
                     for (int i = 0; i < ownerList.size(); i++) {
@@ -144,10 +144,23 @@ public class Assignment {
                     break;
                 }
                 case "3": {
-                    System.out.println("3");
+                    B.DisplayHRRegistration(HRList.size());
+                    HRList = B.getHRList();
+                    HRMenu();
                     break;
                 }
                 case "4": {
+                    s.nextLine();
+                    System.out.print("Please Enter A Staff ID: ");
+                    String ID = s.nextLine();
+                    boolean find = B.DisplayDeliveryManUpdateStatus(ID);
+                    if(find){
+                        DMList = B.getDeliveryMen();
+                    }
+                    HRMenu();
+                    break;
+                }
+                case "5": {
                     System.out.println("4");
                     System.out.println("\n\n\n");
                     menu();
@@ -174,6 +187,8 @@ public class Assignment {
         customer.add(new Customer("CU000001","Miw Jin Le","14,Taman Cantik,53300,Wangsa Maju,Kuala Lumpur","Wangsa Maju","0167897899","970104079999","1234567890"));
         order.add(new Orders(restaurant.get(0),customer.get(0),"OR000001",0.00,0.00,"1",12,45,6,11,2017));
         orderdetail.add(new OrderDetail(order.get(0),food.get(0),1));
+        DMList.add(new DeliveryMan(0, "DM000001", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500 ));
+        B.setDeliveryMen(DMList);
         menu();
     }
     

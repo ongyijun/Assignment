@@ -10,13 +10,15 @@ package domain;
  * @author ong
  */
 public class Food {
+    private String FoodID;
     private String FoodName;
     private double FoodPrice;
     private String FoodType;
     private char FoodAvailability;
     private Restaurant restaurant;
 
-    public Food(String FoodName, double FoodPrice, String FoodType, char FoodAvailability, Restaurant restaurant) {
+    public Food(String FoodID, String FoodName, double FoodPrice, String FoodType, char FoodAvailability, Restaurant restaurant) {
+        this.FoodID = FoodID;
         this.FoodName = FoodName;
         this.FoodPrice = FoodPrice;
         this.FoodType = FoodType;
@@ -64,10 +66,17 @@ public class Food {
         this.restaurant = restaurant;
     }
 
+    public String getFoodID() {
+        return FoodID;
+    }
+
+    public void setFoodID(String FoodID) {
+        this.FoodID = FoodID;
+    }
+
     @Override
     public String toString() {
-        return "Food{" + "FoodName=" + FoodName + ", FoodPrice=" + FoodPrice + ", FoodType=" + FoodType + ", FoodAvailability=" + FoodAvailability + ", restaurant=" + restaurant + '}';
+        return "Food{" + "FoodID=" + FoodID + ", FoodName=" + FoodName + ", FoodPrice=" + FoodPrice + ", FoodType=" + FoodType + ", FoodAvailability=" + FoodAvailability + ", restaurant=" + restaurant + '}';
     }
-    
     
 }

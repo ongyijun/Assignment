@@ -6,6 +6,7 @@
 package ModuleB;
 
 import domain.DeliveryMan;
+import domain.Employee;
 import domain.HR;
 import domain.Owner;
 import java.util.ArrayList;
@@ -132,10 +133,34 @@ public class ModuleBFunction {
                 }
             }
         }
-        if(find == false){
-            System.out.println("Error, Staff Not Found!");
+        if (find == false) {
+            System.out.println("Error, Delivery Man Not Found!");
         }
         return find;
+    }
+
+    public Employee DisplayStaffDetails(String StaffID) {
+        boolean find = false;
+        for (int i = 0; i < deliveryMen.size(); i++) {
+            if (deliveryMen.get(i).getStaffID().equals(StaffID)) {
+                return deliveryMen.get(i);
+            }
+        }
+        if (find == false) {
+            for (int i = 0; i < HRList.size(); i++) {
+                if (HRList.get(i).getStaffID().equals(StaffID)) {
+                    return HRList.get(i);
+                }
+            }
+        }
+        if (find == false) {
+            for (int i = 0; i < ownerList.size(); i++) {
+                if (ownerList.get(i).getStaffID().equals(StaffID)) {
+                    return ownerList.get(i);
+                }
+            }
+        }
+        return null;
     }
 
     public void AddNewOwner(Owner owner) {

@@ -10,19 +10,23 @@ package domain;
  * @author ong
  */
 public class Restaurant {
+    private String RestaurantID;
     private String RestaurantName;
     private String OwnerName;
     private String Address;
     private String ContactNo;
     private String Area;
+    private String Latitude;
     private String Password;
 
-    public Restaurant(String RestaurantName, String OwnerName, String Address, String ContactNo, String Area, String Password) {
+    public Restaurant(String RestaurantID, String RestaurantName, String OwnerName, String Address, String ContactNo, String Area, String Latitude, String Password) {
+        this.RestaurantID = RestaurantID;
         this.RestaurantName = RestaurantName;
         this.OwnerName = OwnerName;
         this.Address = Address;
         this.ContactNo = ContactNo;
         this.Area = Area;
+        this.Latitude = Latitude;
         this.Password = Password;
     }
 
@@ -66,6 +70,14 @@ public class Restaurant {
         this.Area = Area;
     }
 
+    public String getLatitude() {
+        return Latitude;
+    }
+
+    public void setLatitude(String Latitude) {
+        this.Latitude = Latitude;
+    }
+
     public String getPassword() {
         return Password;
     }
@@ -74,9 +86,17 @@ public class Restaurant {
         this.Password = Password;
     }
 
+    public String getRestaurantID() {
+        return RestaurantID;
+    }
+
+    public void setRestaurantID(String RestaurantID) {
+        this.RestaurantID = RestaurantID;
+    }
+
     @Override
     public String toString() {
-        return "Restaurant{" + "RestaurantName=" + RestaurantName + ", OwnerName=" + OwnerName + ", Address=" + Address + ", ContactNo=" + ContactNo + ", Area=" + Area + ", Password=" + Password + '}';
+        return "Restaurant{" + "RestaurantID=" + RestaurantID + ", RestaurantName=" + RestaurantName + ", OwnerName=" + OwnerName + ", Address=" + Address + ", ContactNo=" + ContactNo + ", Area=" + Area + ", Latitude=" + Latitude + ", Password=" + Password + '}';
     }
-    
+
 }

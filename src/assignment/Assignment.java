@@ -6,6 +6,7 @@
 package assignment;
 
 import ModuleB.ModuleBFunction;
+import ModuleC.ModuleCFunction;
 import java.util.List;
 import java.util.ArrayList;
 import domain.*;
@@ -18,9 +19,15 @@ import java.util.Scanner;
 public class Assignment {
 
     private ModuleBFunction B = new ModuleBFunction();
+    private ModuleCFunction C = new ModuleCFunction();
+    private List<Restaurant> restaurant = new ArrayList<>();
+    private List<Food> food = new ArrayList<>();
+    private List<Customer> customer = new ArrayList<>();
+    private List<Orders> order = new ArrayList<>();
+    private List<OrderDetail> orderdetail = new ArrayList<>();
     private List<DeliveryMan> DMList = B.getDeliveryMen();
     private List<Owner> ownerList = B.getOwnerList();
-
+  
     /**
      * @param args the command line arguments
      */
@@ -50,7 +57,7 @@ public class Assignment {
                     break;
                 }
                 case "3": {
-                    System.out.println("3");
+                    C.CustomerLogin(restaurant,food,customer,order,orderdetail);
                     break;
                 }
                 case "4": {
@@ -154,14 +161,25 @@ public class Assignment {
         }
     }
 
+    public void initializeList(){
+        restaurant.add(new Restaurant("RE000001","Nandos", "Tneh Chee Wei", "asd", "016-6666666", "Setapak", "100", "1234567890"));
+        restaurant.add(new Restaurant("RE000002","KFC", "Tneh Chee Wai", "asd", "016-6666666", "Wangsa Maju", "200", "1234567890"));
+        food.add(new Food("FM000001","Chicken Bolognese",11.50,"Noodles",'1',restaurant.get(0)));
+        food.add(new Food("FM000002","Fish Bolognese",11.50,"Noodles",'1',restaurant.get(0)));
+        food.add(new Food("FM000003","Beef Bolognese",13.50,"Noodles",'1',restaurant.get(0)));
+        food.add(new Food("FM000004","Dinner Plate A",11.50,"Set",'1',restaurant.get(1)));
+        food.add(new Food("FM000005","Dinner Plate B",12.50,"Set",'1',restaurant.get(1)));
+        food.add(new Food("FM000006","Dinner Plate C",13.50,"Set",'1',restaurant.get(1)));
+        customer.add(new Customer("CU000001","Miw Jin Li","14,Taman Cantik,53300,Setapak,Kuala Lumpur","Setapak","0167897899","971003355333","1234567890"));
+        customer.add(new Customer("CU000001","Miw Jin Le","14,Taman Cantik,53300,Wangsa Maju,Kuala Lumpur","Wangsa Maju","0167897899","970104079999","1234567890"));
+        order.add(new Orders(restaurant.get(0),customer.get(0),"OR000001",0.00,0.00,"1",12,45,6,11,2017));
+        orderdetail.add(new OrderDetail(order.get(0),food.get(0),1));
+        menu();
+    }
+    
     public static void main(String[] args) {
-        //initialize the variable at here
-        //example:
-        List<Restaurant> restaurant = new ArrayList<>();
-        restaurant.add(new Restaurant("Nandos", "Tneh Chee Wei", "asd", "016-6666666", "Setapak", "1234567890"));
-        restaurant.add(new Restaurant("Nandos1", "Tneh Chee Wei", "asd", "016-6666666", "Setapak", "1234567890"));
         Assignment assignment = new Assignment();
-        assignment.menu();
+        assignment.initializeList();
     }
 
 }

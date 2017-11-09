@@ -45,7 +45,8 @@ public class ModuleBFunction {
         System.out.print("Enter Total Annual Sales: ");
         double annualSale = s.nextDouble();
         s.nextLine();
-        Owner owner = new Owner(annualSale,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
+        String WorkingStatus = "Working";
+        Owner owner = new Owner(annualSale,ID,Name,IC,PhNo,Gender,Adds,Email,Position,WorkingStatus,Salary,0);
         owner.calculateSalary();
         AddNewOwner(owner);
     }
@@ -71,7 +72,8 @@ public class ModuleBFunction {
         System.out.print("Enter New Staff Salary: ");
         Salary = s.nextDouble();
         s.nextLine();
-        HR hr = new HR(TotalStaffManaged,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
+        String WorkingStatus = "Working";
+        HR hr = new HR(TotalStaffManaged,ID,Name,IC,PhNo,Gender,Adds,Email,Position,WorkingStatus,Salary,0);
         hr.calculateSalary();
         AddNewHR(hr);
     }
@@ -96,7 +98,8 @@ public class ModuleBFunction {
         System.out.print("Enter New Delivery Man Basic Salary: ");
         Salary = s.nextDouble();
         s.nextLine();
-        DeliveryMan DM = new DeliveryMan(0,ID,Name,IC,PhNo,Gender,Adds,Email,Position,Salary,0);
+        String WorkingStatus = "Working";
+        DeliveryMan DM = new DeliveryMan(0,ID,Name,IC,PhNo,Gender,Adds,Email,Position,WorkingStatus,Salary,0);
         DM.calculateSalary();
         AddNewDeliveryMan(DM);
     }
@@ -114,6 +117,10 @@ public class ModuleBFunction {
     public void AddNewDeliveryMan(DeliveryMan DM) {
         deliveryMen.add(DM);
         System.out.println("New Delivery Man Added Successfully!");
+    }
+    
+    public void updateDeliveryManStatus(DeliveryMan DM){
+        
     }
 
     public List<DeliveryMan> getDeliveryMen() {

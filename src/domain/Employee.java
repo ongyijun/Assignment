@@ -19,13 +19,14 @@ public abstract class Employee {
     private String StaffAdds;
     private String StaffEmail;
     private String StaffPosition;
+    private String WorkingStatus;
     private double Salary;
     private double TotalPay;
 
     public Employee() {
     }
 
-    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
+    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
         this.StaffID = StaffID;
         this.StaffName = StaffName;
         this.StaffIC = StaffIC;
@@ -34,6 +35,7 @@ public abstract class Employee {
         this.StaffAdds = StaffAdds;
         this.StaffEmail = StaffEmail;
         this.StaffPosition = StaffPosition;
+        this.WorkingStatus = WorkingStatus;
         this.Salary = Salary;
         this.TotalPay = TotalPay;
     }
@@ -100,6 +102,14 @@ public abstract class Employee {
 
     public void setStaffPosition(String StaffPosition) {
         this.StaffPosition = StaffPosition;
+    }
+
+    public String getWorkingStatus() {
+        return WorkingStatus;
+    }
+
+    public void setWorkingStatus(String WorkingStatus) {
+        this.WorkingStatus = WorkingStatus;
     }
 
     public double getSalary() {

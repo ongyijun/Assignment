@@ -60,6 +60,7 @@ public class Assignment {
                 }
                 case "3": {
                     C.CustomerLogin(restaurant, food, customer, order, orderdetail);
+                    menu();
                     break;
                 }
                 case "4": {

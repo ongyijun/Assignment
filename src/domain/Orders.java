@@ -123,7 +123,11 @@ public class Orders {
     public void setOrdersYear(int OrdersYear) {
         this.OrdersYear = OrdersYear;
     }
-
+    
+    public String DatetoString(){
+        return OrdersDay+"/"+OrdersMonth+"/"+OrdersYear+" "+OrdersHour+":"+OrdersMinute;
+    }
+    
     @Override
     public String toString() {
         return "Orders{" + "restaurant=" + restaurant + ", customer=" + customer + ", OrdersID=" + OrdersID + ", Subtotal=" + Subtotal + ", Total=" + Total + ", OrderStatus=" + OrderStatus + ", OrdersHour=" + OrdersHour + ", OrdersMinute=" + OrdersMinute + ", OrdersDay=" + OrdersDay + ", OrdersMonth=" + OrdersMonth + ", OrdersYear=" + OrdersYear + '}';

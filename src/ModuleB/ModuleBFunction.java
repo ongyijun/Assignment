@@ -5,6 +5,7 @@
  */
 package ModuleB;
 
+import domain.Admin;
 import domain.DeliveryMan;
 import domain.Employee;
 import domain.HR;
@@ -21,41 +22,98 @@ public class ModuleBFunction {
 
     private List<DeliveryMan> deliveryMen = new ArrayList<>();
     private List<HR> HRList = new ArrayList<>();
-    private List<Owner> ownerList = new ArrayList<>();
+    private List<Admin> adminList = new ArrayList<>();
     Scanner s = new Scanner(System.in);
 
     public ModuleBFunction() {
     }
 
-    public void DisplayOwnerRegistration(int TotalOwner) {
+    public Employee StaffLogin(String username) {
+        boolean login = false;
+        for (int i = 0; i < deliveryMen.size(); i++) {
+            if (deliveryMen.get(i).getStaffID().equals(username)) {
+                while (login == false) {
+                    System.out.print("Please Enter Password: ");
+                    String pw = s.nextLine();
+                    if (deliveryMen.get(i).getStaffPw().equals(pw)) {
+                        login = true;
+                        System.out.println("Login As " + deliveryMen.get(i).getStaffPosition() + " Successfully!");
+                        DeliveryMan loginDM = deliveryMen.get(i);
+                        return loginDM;
+                    } else {
+                        System.out.println("Error. Wrong Password Entered!Try Again.");
+                    }
+                }
+            }
+        }
+        for(int i=0;i<HRList.size();i++){
+            if(HRList.get(i).getStaffID().equals(username)){
+                while(login==false){
+                    System.out.print("Please Enter Password: ");
+                    String pw = s.nextLine();
+                    if (HRList.get(i).getStaffPw().equals(pw)) {
+                        login = true;
+                        System.out.println("Login As " + HRList.get(i).getStaffPosition() + " Successfully!");
+                        HR loginHR = HRList.get(i);
+                        return loginHR;
+                    } else {
+                        System.out.println("Error. Wrong Password Entered!Try Again.");
+                    }
+                }
+            }
+        }
+        for(int i=0;i<adminList.size();i++){
+            if(adminList.get(i).getStaffID().equals(username)){
+                while(login==false){
+                    System.out.print("Please Enter Password: ");
+                    String pw = s.nextLine();
+                    if (adminList.get(i).getStaffPw().equals(pw)) {
+                        login = true;
+                        System.out.println("Login As " + adminList.get(i).getStaffPosition() + " Successfully!");
+                        Admin loginAdmin = adminList.get(i);
+                        return loginAdmin;
+                    } else {
+                        System.out.println("Error. Wrong Password Entered!Try Again.");
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public void DisplayAdminRegistration(int TotalOwner) {
         String Position = "Owner";
         double Salary = 0;
         String ID = String.format("OW%06d", TotalOwner + 1);
-        System.out.print("Enter New Owner Name: ");
+        System.out.print("Enter New Admin Password: ");
+        String Pw = s.nextLine();
+        System.out.print("Enter New Admin Name: ");
         String Name = s.nextLine();
-        System.out.print("Enter New Owner IC: ");
+        System.out.print("Enter New Admin IC: ");
         String IC = s.nextLine();
-        System.out.print("Enter New Owner Phone No: ");
+        System.out.print("Enter New Admin Phone No: ");
         String PhNo = s.nextLine();
-        System.out.print("Enter New Owner Gender(M/F): ");
+        System.out.print("Enter New Admin Gender(M/F): ");
         char Gender = Character.toUpperCase(s.nextLine().charAt(0));
-        System.out.print("Enter New Owner Address: ");
+        System.out.print("Enter New Admin Address: ");
         String Adds = s.nextLine();
-        System.out.print("Enter New Owner Email: ");
+        System.out.print("Enter New Admin Email: ");
         String Email = s.nextLine();
         System.out.print("Enter Total Annual Sales: ");
         double annualSale = s.nextDouble();
         s.nextLine();
         String WorkingStatus = "Working";
-        Owner owner = new Owner(annualSale, ID, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
-        owner.calculateSalary();
-        AddNewOwner(owner);
+        Admin admin = new Admin(annualSale, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
+        admin.calculateSalary();
+        AddNewAdmin(admin);
     }
 
     public void DisplayHRRegistration(int TotalHR) {
         String Position = "HR";
         double Salary = 0;
         String ID = String.format("HR%06d", TotalHR + 1);
+        System.out.print("Enter New HR Password: ");
+        String Pw = s.nextLine();
         System.out.print("Enter New HR Name: ");
         String Name = s.nextLine();
         System.out.print("Enter New HR IC: ");
@@ -74,7 +132,7 @@ public class ModuleBFunction {
         Salary = s.nextDouble();
         s.nextLine();
         String WorkingStatus = "Working";
-        HR hr = new HR(TotalStaffManaged, ID, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
+        HR hr = new HR(TotalStaffManaged, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
         hr.calculateSalary();
         AddNewHR(hr);
     }
@@ -83,6 +141,8 @@ public class ModuleBFunction {
         String Position = "Delivery Man";
         double Salary = 0;
         String ID = String.format("DM%06d", TotalDeliveryMan + 1);
+        System.out.print("Enter New Delivery Man Password: ");
+        String Pw = s.nextLine();
         System.out.print("Enter New Delivery Man Name: ");
         String Name = s.nextLine();
         System.out.print("Enter New Delivery Man IC: ");
@@ -100,7 +160,7 @@ public class ModuleBFunction {
         Salary = s.nextDouble();
         s.nextLine();
         String WorkingStatus = "Working";
-        DeliveryMan DM = new DeliveryMan(0, ID, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
+        DeliveryMan DM = new DeliveryMan(0, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
         DM.calculateSalary();
         AddNewDeliveryMan(DM);
     }
@@ -154,17 +214,17 @@ public class ModuleBFunction {
             }
         }
         if (find == false) {
-            for (int i = 0; i < ownerList.size(); i++) {
-                if (ownerList.get(i).getStaffID().equals(StaffID)) {
-                    return ownerList.get(i);
+            for (int i = 0; i < adminList.size(); i++) {
+                if (adminList.get(i).getStaffID().equals(StaffID)) {
+                    return adminList.get(i);
                 }
             }
         }
         return null;
     }
 
-    public void AddNewOwner(Owner owner) {
-        ownerList.add(owner);
+    public void AddNewAdmin(Admin admin) {
+        adminList.add(admin);
         System.out.println("New Owner Added Successfully!");
     }
 
@@ -208,11 +268,12 @@ public class ModuleBFunction {
         this.HRList = HRList;
     }
 
-    public List<Owner> getOwnerList() {
-        return ownerList;
+    public List<Admin> getAdminList() {
+        return adminList;
     }
 
-    public void setOwnerList(List<Owner> ownerList) {
-        this.ownerList = ownerList;
+    public void setAdminList(List<Admin> adminList) {
+        this.adminList = adminList;
     }
+
 }

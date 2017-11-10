@@ -21,9 +21,17 @@ public class DeliveryMan extends Employee {
         this.TotalPendingDelivery = TotalPendingDelivery;
     }
 
-    public DeliveryMan(int TotalPendingDelivery, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
-        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, WorkingStatus, Salary, TotalPay);
+    public DeliveryMan(int TotalPendingDelivery, String StaffID, String StaffPw, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
+        super(StaffID, StaffPw, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, WorkingStatus, Salary, TotalPay);
         this.TotalPendingDelivery = TotalPendingDelivery;
+    }
+
+    public WorkStatus getWs() {
+        return ws;
+    }
+
+    public void setWs(WorkStatus ws) {
+        this.ws = ws;
     }
 
     public int getTotalPendingDelivery() {

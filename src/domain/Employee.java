@@ -12,6 +12,7 @@ package domain;
 public abstract class Employee {
 
     private String StaffID;
+    private String StaffPw;
     private String StaffName;
     private String StaffIC;
     private String StaffPhNo;
@@ -26,8 +27,9 @@ public abstract class Employee {
     public Employee() {
     }
 
-    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
+    public Employee(String StaffID, String StaffPw, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
         this.StaffID = StaffID;
+        this.StaffPw = StaffPw;
         this.StaffName = StaffName;
         this.StaffIC = StaffIC;
         this.StaffPhNo = StaffPhNo;
@@ -38,6 +40,14 @@ public abstract class Employee {
         this.WorkingStatus = WorkingStatus;
         this.Salary = Salary;
         this.TotalPay = TotalPay;
+    }
+
+    public String getStaffPw() {
+        return StaffPw;
+    }
+
+    public void setStaffPw(String StaffPw) {
+        this.StaffPw = StaffPw;
     }
 
     public String getStaffID() {

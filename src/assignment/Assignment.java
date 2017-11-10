@@ -26,9 +26,9 @@ public class Assignment {
     private List<Orders> order = new ArrayList<>();
     private List<OrderDetail> orderdetail = new ArrayList<>();
     private List<DeliveryMan> DMList = new ArrayList<>();
-    ;
-    private List<Owner> ownerList = new ArrayList<>();
+    private List<Admin> adminList = new ArrayList<>();
     private List<HR> HRList = new ArrayList<>();
+    private Employee loginStaff;
 
     /**
      * @param args the command line arguments
@@ -76,38 +76,23 @@ public class Assignment {
 
     public void staffMenu() {
         Scanner s = new Scanner(System.in);
-        String selection = "0";
-        System.out.println("Please Select The Option Below");
-        System.out.println("1. Login As Owner");
-        System.out.println("2. Login As HR");
-        System.out.println("3. Login As Delivery Man");
-        System.out.println("4. Afficilate Login");
-        while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4")) {
-            System.out.print("Option: ");
-            selection = s.next();
-            switch (selection) {
-                case "1": {
-                    System.out.println("1");
-                    break;
-                }
-                case "2": {
-                    System.out.println("2");
-                    HRMenu();
-                    break;
-                }
-                case "3": {
-                    System.out.println("3");
-                    break;
-                }
-                case "4": {
-                    System.out.println("4");
-                    menu();
-                    break;
-                }
-                default: {
-                    System.out.println("Error, Please Key In Again.");
-                    break;
-                }
+        boolean login = false;
+        while (login == false) {
+            System.out.print("Please Enter Staff ID: ");
+            String username = s.nextLine();
+            loginStaff = B.StaffLogin(username.toUpperCase());
+            if (loginStaff instanceof DeliveryMan) {
+                System.out.println("\n\n\n");
+                login = true;
+            } else if (loginStaff instanceof HR) {
+                login = true;
+                System.out.println("\n\n\n");
+                HRMenu();
+            } else if (loginStaff instanceof Admin) {
+                System.out.println("\n\n\n");
+                login = true;
+            } else {
+                System.out.println("Error. Username Not Found!");
             }
         }
     }
@@ -137,10 +122,10 @@ public class Assignment {
                     break;
                 }
                 case "2": {
-                    B.DisplayOwnerRegistration(ownerList.size());
-                    ownerList = B.getOwnerList();
-                    for (int i = 0; i < ownerList.size(); i++) {
-                        System.out.printf("%s\n", ownerList.get(i).getSalary());
+                    B.DisplayAdminRegistration(adminList.size());
+                    adminList = B.getAdminList();
+                    for (int i = 0; i < adminList.size(); i++) {
+                        System.out.printf("%s\n", adminList.get(i).getSalary());
                     }
                     HRMenu();
                     break;
@@ -155,7 +140,7 @@ public class Assignment {
                     s.nextLine();
                     System.out.print("Please Enter A Delivery Man ID: ");
                     String ID = s.nextLine();
-                    boolean find = B.DisplayDeliveryManUpdateStatus(ID);
+                    boolean find = B.DisplayDeliveryManUpdateStatus(ID.toUpperCase());
                     if (find) {
                         DMList = B.getDeliveryMen();
                     }
@@ -164,21 +149,25 @@ public class Assignment {
                 }
                 case "5": {
                     s.nextLine();
-                    System.out.print("Please Enter A Staff ID: ");
-                    String ID = s.nextLine();
-                    Employee e = B.DisplayStaffDetails(ID);
-                    if (e == null) {
-
-                    } else {
-                        System.out.printf("Staff ID: %s\n"
-                                + "StaffName: %s\n"
-                                + "Staff Phone No: %s\n"
-                                + "Staff Address: %s\n"
-                                + "Staff Position: %s\n"
-                                + "Staff Status: %s\n"
-                                + "Staff Basic Salary: %.2f\n"
-                                + "Press Enter To Continue...", e.getStaffID(), e.getStaffName(), e.getStaffPhNo(), e.getStaffAdds(), e.getStaffPosition(), e.getWorkingStatus(), e.getSalary());
-                        s.nextLine();
+                    boolean find = false;
+                    while (find == false) {
+                        System.out.print("Please Enter A Staff ID: ");
+                        String ID = s.nextLine();
+                        Employee e = B.DisplayStaffDetails(ID.toUpperCase());
+                        if (e == null) {
+                            System.out.println("Error. Staff ID Not Found!");
+                        } else {
+                            find = true;
+                            System.out.printf("Staff ID: %s\n"
+                                    + "StaffName: %s\n"
+                                    + "Staff Phone No: %s\n"
+                                    + "Staff Address: %s\n"
+                                    + "Staff Position: %s\n"
+                                    + "Staff Status: %s\n"
+                                    + "Staff Basic Salary: %.2f\n"
+                                    + "Press Enter To Continue...", e.getStaffID(), e.getStaffName(), e.getStaffPhNo(), e.getStaffAdds(), e.getStaffPosition(), e.getWorkingStatus(), e.getSalary());
+                            s.nextLine();
+                        }
                     }
                     HRMenu();
                     break;
@@ -209,8 +198,10 @@ public class Assignment {
         customer.add(new Customer("CU000001", "Miw Jin Le", "14,Taman Cantik,53300,Wangsa Maju,Kuala Lumpur", "Wangsa Maju", "0167897899", "970104079999", "1234567890"));
         order.add(new Orders(restaurant.get(0), customer.get(0), "OR000001", 0.00, 0.00, "1", 12, 45, 6, 11, 2017));
         orderdetail.add(new OrderDetail(order.get(0), food.get(0), 1));
-        DMList.add(new DeliveryMan(0, "DM000001", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
+        DMList.add(new DeliveryMan(0, "DM000001", "123456", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
         B.setDeliveryMen(DMList);
+        HRList.add(new HR(1, "HR000001", "123456", "Ong Ong Jun", "970707-07-0707", "010-2255533", 'M', "Jalan Prima Setapak, KL", "OngOngJun@hotmail.com", "HR", "Working", 3500, 3750));
+        B.setHRList(HRList);
         menu();
     }
 

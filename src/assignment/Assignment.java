@@ -52,6 +52,7 @@ public class Assignment {
                 case "1": {
                     //create class at module A and import the module A at this class and den call the method from here
                     A.RestaurantRegistration(restaurant);
+                    menu();
                     break;
                 }
                 case "2": {
@@ -65,7 +66,10 @@ public class Assignment {
                     break;
                 }
                 case "4": {
-                    A.RestaurantLogin(restaurant);
+                    boolean a = A.RestaurantLogin(restaurant);
+                    if(a){
+                        RestaurantMenu(restaurant);
+                    }
                     break;
                 }
                 default: {
@@ -95,6 +99,42 @@ public class Assignment {
                 login = true;
             } else {
                 System.out.println("Error. Username Not Found!");
+            }
+        }
+    }
+    
+    public void RestaurantMenu(List<Restaurant> restaurant){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Add New Menu Items");
+        System.out.println("2. Update Menu Item Details");
+        System.out.println("3. Remove Menu Items");
+        System.out.println("0. Log Out");
+        
+        System.out.print("Option: ");
+        int selection = sc.nextInt();
+        sc.nextLine();
+        switch(selection){
+            case 1:{
+                System.out.println("Stay Tuned. Under Construction.");
+                break;
+            }
+            case 2:{
+                System.out.println("Stay Tuned. Under Construction.");
+                break;
+            }
+            case 3:{
+                System.out.println("Stay Tuned. Under Construction.");
+                break;
+            }
+            case 0:{
+                System.out.println("Successfully Logout");
+                menu();
+                break;
+            }
+            default:{
+                System.out.println("Error. Please key in again.");
+                RestaurantMenu(restaurant);
+                break;
             }
         }
     }

@@ -44,21 +44,24 @@ public class ModuleAFunction {
         System.out.print("Password: ");
         String pass =sc.nextLine();
         
+        boolean b = true;
         for(int i=0 ; i<restaurant.size() ; i++){
             if(add.equals(restaurant.get(i).getAddress())){
                 System.out.println("Restaurant already exists in the system.");
                 RestaurantRegistration(restaurant);
-            }else{
-                Restaurant rest = new Restaurant(restid,rName,oName,add,no,area,latitude,pass);
-                restaurant.add(rest);
-                System.out.println("Successfully Registered.");
-                RestaurantLogin(restaurant);
+                b = false;
             }
-        }       
+        }
+        if(b == true){
+            Restaurant rest = new Restaurant(restid,rName,oName,add,no,area,latitude,pass);
+            restaurant.add(rest);
+            System.out.println("Successfully Registered.");
+        }
     }
     
-    public void RestaurantLogin(List<Restaurant> restaurant){
+    public boolean RestaurantLogin(List<Restaurant> restaurant){
         int idcount = 0;
+        boolean password = false;
         System.out.println("----------------");
         System.out.println("Affiliate Login");
         System.out.println("----------------");        
@@ -71,8 +74,10 @@ public class ModuleAFunction {
            while(id.equals(restaurant.get(i).getRestaurantID())){
                if(pass.equals(restaurant.get(i).getPassword())){
                    idcount = 1;
+                   password = true;
                    System.out.println("Successfully Login");
-                   RestaurantMenu(restaurant);
+                   //RestaurantMenu(restaurant);
+                   return password;
                }
                else{
                    System.out.println("Invalid password");
@@ -84,62 +89,7 @@ public class ModuleAFunction {
             System.out.println("Invalid ID");
             RestaurantLogin(restaurant);
         }
-    }
-    
-    public void RestaurantMenu(List<Restaurant> restaurant){
-        System.out.println("1. Add New Menu Items");
-        System.out.println("2. Update Menu Item Details");
-        System.out.println("3. Remove Menu Items");
-        System.out.println("0. Log Out");
-        
-        System.out.print("Option: ");
-        int selection = sc.nextInt();
-        sc.nextLine();
-        switch(selection){
-            case 1:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 2:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 3:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 0:{
-                System.out.println("Successfully Logout");
-                //RestaurantLogin(restaurant);
-                Amenu();
-                break;
-            }
-            default:{
-                System.out.println("Error. Please key in again.");
-                RestaurantMenu(restaurant);
-                break;
-            }
-        }
-    }
- 
-    public void Amenu(){
-        System.out.println("1. Affiliate Registration");
-        System.out.println("2. Affiliate Login");
-        System.out.print("Option: ");
-        int selection = sc.nextInt();
-        sc.nextLine();
-        switch(selection){
-            case 1:{
-                RestaurantRegistration(restaurant);
-            }
-            case 2:{
-                RestaurantLogin(restaurant);
-            }
-            default:{
-                System.out.println("Error. Please select again");
-                Amenu();
-            }
-        }
+        return password;
     }
     
     public void setRestaurant(List<Restaurant> restaurant){

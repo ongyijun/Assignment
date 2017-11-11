@@ -9,19 +9,19 @@ package domain;
  *
  * @author MY
  */
-public class Owner extends Employee {
+public class Admin extends Employee {
 
     private double annualSale;
 
-    public Owner() {
+    public Admin() {
     }
 
-    public Owner(double annualSale) {
+    public Admin(double annualSale) {
         this.annualSale = annualSale;
     }
 
-    public Owner(double annualSale, String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
-        super(StaffID, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, Salary, TotalPay);
+    public Admin(double annualSale, String StaffID, String StaffPw, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
+        super(StaffID, StaffPw, StaffName, StaffIC, StaffPhNo, StaffGender, StaffAdds, StaffEmail, StaffPosition, WorkingStatus, Salary, TotalPay);
         this.annualSale = annualSale;
     }
 
@@ -38,5 +38,4 @@ public class Owner extends Employee {
         super.setSalary(annualSale * 0.3);
         super.setTotalPay(super.getSalary());
     }
-
 }

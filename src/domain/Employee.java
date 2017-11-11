@@ -12,6 +12,7 @@ package domain;
 public abstract class Employee {
 
     private String StaffID;
+    private String StaffPw;
     private String StaffName;
     private String StaffIC;
     private String StaffPhNo;
@@ -19,14 +20,16 @@ public abstract class Employee {
     private String StaffAdds;
     private String StaffEmail;
     private String StaffPosition;
+    private String WorkingStatus;
     private double Salary;
     private double TotalPay;
 
     public Employee() {
     }
 
-    public Employee(String StaffID, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, double Salary, double TotalPay) {
+    public Employee(String StaffID, String StaffPw, String StaffName, String StaffIC, String StaffPhNo, char StaffGender, String StaffAdds, String StaffEmail, String StaffPosition, String WorkingStatus, double Salary, double TotalPay) {
         this.StaffID = StaffID;
+        this.StaffPw = StaffPw;
         this.StaffName = StaffName;
         this.StaffIC = StaffIC;
         this.StaffPhNo = StaffPhNo;
@@ -34,8 +37,17 @@ public abstract class Employee {
         this.StaffAdds = StaffAdds;
         this.StaffEmail = StaffEmail;
         this.StaffPosition = StaffPosition;
+        this.WorkingStatus = WorkingStatus;
         this.Salary = Salary;
         this.TotalPay = TotalPay;
+    }
+
+    public String getStaffPw() {
+        return StaffPw;
+    }
+
+    public void setStaffPw(String StaffPw) {
+        this.StaffPw = StaffPw;
     }
 
     public String getStaffID() {
@@ -100,6 +112,14 @@ public abstract class Employee {
 
     public void setStaffPosition(String StaffPosition) {
         this.StaffPosition = StaffPosition;
+    }
+
+    public String getWorkingStatus() {
+        return WorkingStatus;
+    }
+
+    public void setWorkingStatus(String WorkingStatus) {
+        this.WorkingStatus = WorkingStatus;
     }
 
     public double getSalary() {

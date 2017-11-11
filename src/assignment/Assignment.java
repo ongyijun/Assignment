@@ -5,6 +5,7 @@
  */
 package assignment;
 
+import ModuleA.ModuleAFunction;
 import ModuleB.ModuleBFunction;
 import ModuleC.ModuleCFunction;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Scanner;
  * @author ong
  */
 public class Assignment {
-
+    private ModuleAFunction A = new ModuleAFunction();
     private ModuleBFunction B = new ModuleBFunction();
     private ModuleCFunction C = new ModuleCFunction();
     private List<Restaurant> restaurant = new ArrayList<>();
@@ -40,17 +41,17 @@ public class Assignment {
         System.out.println("*Welcome to Faster Deliverymen System*");
         System.out.println("**************************************");
         System.out.println("Please Select The Option Below");
-        System.out.println("1. Afficilate Register");
+        System.out.println("1. Affiliate Register");
         System.out.println("2. Staff Login");
         System.out.println("3. Customer Login");
-        System.out.println("4. Afficilate Login");
+        System.out.println("4. Affiliate Login");
         while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") && !selection.equals("4")) {
             System.out.print("Option: ");
             selection = s.next();
             switch (selection) {
                 case "1": {
                     //create class at module A and import the module A at this class and den call the method from here
-                    System.out.println("1");
+                    A.RestaurantRegistration(restaurant);
                     break;
                 }
                 case "2": {
@@ -64,7 +65,7 @@ public class Assignment {
                     break;
                 }
                 case "4": {
-                    System.out.println("4");
+                    A.RestaurantLogin(restaurant);
                     break;
                 }
                 default: {
@@ -203,6 +204,7 @@ public class Assignment {
         B.setDeliveryMen(DMList);
         HRList.add(new HR(1, "HR000001", "123456", "Ong Ong Jun", "970707-07-0707", "010-2255533", 'M', "Jalan Prima Setapak, KL", "OngOngJun@hotmail.com", "HR", "Working", 3500, 3750));
         B.setHRList(HRList);
+        A.setRestaurant(restaurant);
         menu();
     }
 

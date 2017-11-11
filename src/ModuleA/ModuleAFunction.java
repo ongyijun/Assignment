@@ -44,21 +44,24 @@ public class ModuleAFunction {
         System.out.print("Password: ");
         String pass =sc.nextLine();
         
+        boolean b = true;
         for(int i=0 ; i<restaurant.size() ; i++){
             if(add.equals(restaurant.get(i).getAddress())){
                 System.out.println("Restaurant already exists in the system.");
                 RestaurantRegistration(restaurant);
-            }else{
-                Restaurant rest = new Restaurant(restid,rName,oName,add,no,area,latitude,pass);
-                restaurant.add(rest);
-                System.out.println("Successfully Registered.");
-                RestaurantLogin(restaurant);
+                b = false;
             }
-        }       
+        }
+        if(b == true){
+            Restaurant rest = new Restaurant(restid,rName,oName,add,no,area,latitude,pass);
+            restaurant.add(rest);
+            System.out.println("Successfully Registered.");
+        }
     }
     
-    public void RestaurantLogin(List<Restaurant> restaurant){
+    public boolean RestaurantLogin(List<Restaurant> restaurant){
         int idcount = 0;
+        boolean password = false;
         System.out.println("----------------");
         System.out.println("Affiliate Login");
         System.out.println("----------------");        
@@ -71,8 +74,10 @@ public class ModuleAFunction {
            while(id.equals(restaurant.get(i).getRestaurantID())){
                if(pass.equals(restaurant.get(i).getPassword())){
                    idcount = 1;
+                   password = true;
                    System.out.println("Successfully Login");
-                   RestaurantMenu(restaurant);
+                   //RestaurantMenu(restaurant);
+                   return password;
                }
                else{
                    System.out.println("Invalid password");
@@ -84,9 +89,10 @@ public class ModuleAFunction {
             System.out.println("Invalid ID");
             RestaurantLogin(restaurant);
         }
+        return password;
     }
     
-    public void RestaurantMenu(List<Restaurant> restaurant){
+    /*public void RestaurantMenu(List<Restaurant> restaurant){
         System.out.println("1. Add New Menu Items");
         System.out.println("2. Update Menu Item Details");
         System.out.println("3. Remove Menu Items");
@@ -140,7 +146,7 @@ public class ModuleAFunction {
                 Amenu();
             }
         }
-    }
+    }*/
     
     public void setRestaurant(List<Restaurant> restaurant){
         this.restaurant = restaurant;

@@ -31,6 +31,7 @@ public class ModuleCFunction {
         name = name.toUpperCase();
         System.out.print("Password:");
         password = s.nextLine();
+        
         for(int i=0 ; i<customer.size() ; i++){
             if(name.equals(customer.get(i).getCustName().toUpperCase())){
                 if(password.equals(customer.get(i).getCustPass())){
@@ -59,9 +60,11 @@ public class ModuleCFunction {
         System.out.println("1. Make Order");
         System.out.println("2. View Order Cart");
         System.out.println("3. Cancel Order");
-        while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3")) {
+        System.out.println("4. Logout");
+        while (!selection.equals("1") && !selection.equals("2") && !selection.equals("3") &&!selection.equals("4")) {
             System.out.print("Option: ");
-            selection = s.next();
+            selection = s.nextLine();
+            
             switch (selection) {
                 case "1": {
                     SelectRestaurant(current,restaurant,food,customer,order,orderdetail);
@@ -75,8 +78,13 @@ public class ModuleCFunction {
                     System.out.println("Under Construction");
                     break;
                 }
+                case "4": {
+                    System.out.println("\n\n\n\n");
+                    break;
+                }
                 default: {
                     System.out.println("Error, Please Key In Again.");
+                    CustomerMenu(current,restaurant,food,customer,order,orderdetail);
                     break;
                 }
             }
@@ -84,7 +92,7 @@ public class ModuleCFunction {
     }
     
     public void SelectRestaurant(Customer current,List<Restaurant> restaurant,List<Food> food,List<Customer> customer,List<Orders> order,List<OrderDetail> orderdetail){
-        boolean find = false;
+        boolean find = false,checkout=false;
         int resIndex=0;
         String selection = "0",foodid = "0", nextID = "0";
         List<Food> CurrentFood = new ArrayList<>();
@@ -95,8 +103,12 @@ public class ModuleCFunction {
         for(int i=0 ; i<restaurant.size() ; i++){
             System.out.println((i+1)+". "+restaurant.get(i).getRestaurantName());
         }
-        System.out.print("Please Enter the Restaurant Name (Example:KFC): ");
+        System.out.print("Please Enter the Restaurant Name (Example:KFC) B to Back: ");
         selection = s.nextLine();
+        if(selection.equals("B")){
+            CustomerMenu(current,restaurant,food,customer,order,orderdetail);
+        }
+        else{
         for(int i=0 ; i<restaurant.size()&&find==false ; i++){
             if(selection.equals(restaurant.get(i).getRestaurantName())){
                 find = true;
@@ -133,10 +145,10 @@ public class ModuleCFunction {
                 System.out.println("Food Price-> RM"+CurrentFood.get(k).getFoodPrice());
                 System.out.println("---------------------------------");
             }
-            while(!foodid.equals("E")&&!foodid.equals("B")){
-                System.out.println("Please Enter the Food ID that You Want (Press E to checkout, B to cancel):");
+            while(!foodid.equals("E")&&!foodid.equals("B")&&checkout==false){
+                System.out.println("Please Enter the Food ID that You Want (Press C to checkout, B to back and cancel):");
                 foodid = s.nextLine();
-                if(foodid.equals("E")){
+                if(foodid.equals("C")){
                     //getting the system date
                     Date date = new Date();
                     Calendar cal = Calendar.getInstance();
@@ -155,11 +167,16 @@ public class ModuleCFunction {
                     for(int i=0 ; i<currentDetail.size() ; i++){
                         orderdetail.add(currentDetail.get(i));
                     }
+                    
                     for(int j=0 ; j<orderdetail.size() ; j++){
-                        System.out.println(orderdetail.get(j).getOrders().getRestaurant().getRestaurantName());
-                        System.out.println(orderdetail.get(j).getFood().getFoodName());
-                        System.out.println(orderdetail.get(j).getQuantity());
+                        System.out.println("---------------------------------");
+                        System.out.println("Order Date Time->"+orderdetail.get(j).getOrders().DatetoString());
+                        System.out.println("Restaurant Name->"+orderdetail.get(j).getOrders().getRestaurant().getRestaurantName());
+                        System.out.println("Food ID->"+orderdetail.get(j).getFood().getFoodID());
+                        System.out.println("Quantity->"+orderdetail.get(j).getQuantity());
                     }
+                    s.nextLine();
+                    checkout=true;
                 }
                 else if(foodid.equals("B")){
                     SelectRestaurant(current,restaurant,food,customer,order,orderdetail);
@@ -175,6 +192,7 @@ public class ModuleCFunction {
                 }
                 }
             };
+        }
         }
     }
 }

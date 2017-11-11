@@ -92,62 +92,6 @@ public class ModuleAFunction {
         return password;
     }
     
-    /*public void RestaurantMenu(List<Restaurant> restaurant){
-        System.out.println("1. Add New Menu Items");
-        System.out.println("2. Update Menu Item Details");
-        System.out.println("3. Remove Menu Items");
-        System.out.println("0. Log Out");
-        
-        System.out.print("Option: ");
-        int selection = sc.nextInt();
-        sc.nextLine();
-        switch(selection){
-            case 1:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 2:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 3:{
-                System.out.println("Stay Tuned. Under Construction.");
-                break;
-            }
-            case 0:{
-                System.out.println("Successfully Logout");
-                //RestaurantLogin(restaurant);
-                Amenu();
-                break;
-            }
-            default:{
-                System.out.println("Error. Please key in again.");
-                RestaurantMenu(restaurant);
-                break;
-            }
-        }
-    }
- 
-    public void Amenu(){
-        System.out.println("1. Affiliate Registration");
-        System.out.println("2. Affiliate Login");
-        System.out.print("Option: ");
-        int selection = sc.nextInt();
-        sc.nextLine();
-        switch(selection){
-            case 1:{
-                RestaurantRegistration(restaurant);
-            }
-            case 2:{
-                RestaurantLogin(restaurant);
-            }
-            default:{
-                System.out.println("Error. Please select again");
-                Amenu();
-            }
-        }
-    }*/
-    
     public void setRestaurant(List<Restaurant> restaurant){
         this.restaurant = restaurant;
     }

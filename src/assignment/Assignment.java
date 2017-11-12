@@ -8,6 +8,7 @@ package assignment;
 import ModuleA.ModuleAFunction;
 import ModuleB.ModuleBFunction;
 import ModuleC.ModuleCFunction;
+import ModuleD.ModuleDFunction;
 import java.util.List;
 import java.util.ArrayList;
 import domain.*;
@@ -22,6 +23,7 @@ public class Assignment {
     private ModuleAFunction A = new ModuleAFunction();
     private ModuleBFunction B = new ModuleBFunction();
     private ModuleCFunction C = new ModuleCFunction();
+    private ModuleDFunction D = new ModuleDFunction();
     private List<Restaurant> restaurant = new ArrayList<>();
     private List<Food> food = new ArrayList<>();
     private List<Customer> customer = new ArrayList<>();
@@ -91,6 +93,8 @@ public class Assignment {
             if (loginStaff instanceof DeliveryMan) {
                 System.out.println("\n\n\n");
                 login = true;
+                DeliveryManMenu(loginStaff);
+                menu();
             } else if (loginStaff instanceof HR) {
                 login = true;
                 System.out.println("\n\n\n");
@@ -98,6 +102,8 @@ public class Assignment {
             } else if (loginStaff instanceof Admin) {
                 System.out.println("\n\n\n");
                 login = true;
+                D.ViewDeliverManClockInOut(DMList);
+                menu();
             } else {
                 System.out.println("Error. Username Not Found!");
             }
@@ -136,6 +142,45 @@ public class Assignment {
                 System.out.println("Error. Please key in again.");
                 RestaurantMenu(restaurant);
                 break;
+            }
+        }
+    }
+
+    public void DeliveryManMenu(Employee deliveryMen) {
+        Scanner s = new Scanner(System.in);
+
+        String choice = "None";
+        System.out.println("DeliveryMen Name : " + deliveryMen.getStaffName());
+        for (int i = 0; i < DMList.size(); i++) {
+            if (DMList.get(i).getStaffID().equals(deliveryMen.getStaffID())) {
+                String currentStatus = DMList.get(i).getCurrentAvailable();
+                System.out.println("Current Status : " + currentStatus);
+            }
+        }
+        System.out.println("**********");
+        System.out.println("*  Menu  *");
+        System.out.println("**********");
+        System.out.println("1. Clock In / Clock Out \n2. Change Deliver Status \n3. Exit");
+
+        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")) {
+            System.out.print("Option : ");
+            choice = s.nextLine();
+            switch (choice) {
+                case "1": {
+                    D.DeliveryMenClockInOut(DMList, deliveryMen.getStaffID());
+                    break;
+                }
+                case "2": {
+                    D.ChangeDeliverStatus(DMList, deliveryMen.getStaffID());
+                    break;
+                }
+                case "3": {
+                    break;
+                }
+                default: {
+                    System.out.println("Please Enter Again...");
+                    choice = "None";
+                }
             }
         }
     }

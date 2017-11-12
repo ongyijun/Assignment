@@ -83,7 +83,7 @@ public class ModuleBFunction {
     public void DisplayAdminRegistration(int TotalOwner) {
         String Position = "Owner";
         double Salary = 0;
-        String ID = String.format("OW%06d", TotalOwner + 1);
+        String ID = String.format("AD%06d", TotalOwner + 1);
         System.out.print("Enter New Admin Password: ");
         String Pw = s.nextLine();
         System.out.print("Enter New Admin Name: ");
@@ -172,18 +172,19 @@ public class ModuleBFunction {
             if (deliveryMen.get(i).getStaffID().equals(StaffID)) {
                 find = true;
                 DeliveryMan DM = deliveryMen.get(i);
+                if(DM.getWorkingStatus().equals("Working")){
                 String choice = "0";
                 System.out.print("Choose A Reason\n 1. Retired\n 2.Resigned\n");
                 while (!choice.equals("1") && !choice.equals("2")) {
                     System.out.print("Your Choice: ");
-                    choice = s.next();
+                    choice = s.nextLine();
                     switch (choice) {
                         case "1": {
-                            updateDeliveryManStatus(DM, Integer.parseInt(choice));
+                            updateDeliveryManStatus(DM,choice);
                             break;
                         }
                         case "2": {
-                            updateDeliveryManStatus(DM, Integer.parseInt(choice));
+                            updateDeliveryManStatus(DM, choice);
                             break;
                         }
                         default: {
@@ -192,7 +193,10 @@ public class ModuleBFunction {
                         }
                     }
                 }
+            }else{
+                System.out.println("Error. Delivery Man Already Not Working With Us!");
             }
+        }
         }
         if (find == false) {
             System.out.println("Error, Delivery Man Not Found!");
@@ -239,20 +243,21 @@ public class ModuleBFunction {
         System.out.println("New Delivery Man Added Successfully!");
     }
 
-    public void updateDeliveryManStatus(DeliveryMan DM, int i) {
-        if (i == 1) {
+    public void updateDeliveryManStatus(DeliveryMan DM, String i) {
+        if (i.equals("1")) {
             DM.setWorkingStatus("Retired");
-        } else {
+        } else{
             DM.setWorkingStatus("Resigned");
         }
-        for (int j = 0; i < deliveryMen.size(); j++) {
+        for (int j = 0; j < deliveryMen.size(); j++) {
             if (deliveryMen.get(j).getStaffID().equals(DM.getStaffID())) {
-                deliveryMen.add(j, DM);
+                deliveryMen.set(j, DM);
+                
             }
         }
         System.out.println("Update Status Successfully!");
-    }
 
+    }
     public List<DeliveryMan> getDeliveryMen() {
         return deliveryMen;
     }

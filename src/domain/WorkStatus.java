@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
 import java.util.Calendar;
@@ -20,6 +15,29 @@ public class WorkStatus {
     private int TotalDeliveredOrder;
     private DeliveryMan DM;
 
+    public WorkStatus() 
+    {
+    }
+
+    public WorkStatus(String WorkingID, Calendar CheckIn, Calendar CheckOut, double TotalDistance, int TotalDeliveredOrder, DeliveryMan DM)
+    {
+        this.WorkingID = WorkingID;
+        this.CheckIn = CheckIn;
+        this.CheckOut = CheckOut;
+        this.TotalDistance = TotalDistance;
+        this.TotalDeliveredOrder = TotalDeliveredOrder;
+        this.DM = DM;
+    }
+    
+    //CL
+    
+    public WorkStatus(String WorkingID, Calendar CheckIn, Calendar CheckOut) {
+        this.WorkingID = WorkingID;
+        this.CheckIn = CheckIn;
+        this.CheckOut = CheckOut;
+    }
+    
+    //CL
     public Calendar getCheckIn() {
         return CheckIn;
     }

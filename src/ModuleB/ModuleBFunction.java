@@ -45,9 +45,9 @@ public class ModuleBFunction {
                 }
             }
         }
-        for(int i=0;i<HRList.size();i++){
-            if(HRList.get(i).getStaffID().equals(username)){
-                while(login==false){
+        for (int i = 0; i < HRList.size(); i++) {
+            if (HRList.get(i).getStaffID().equals(username)) {
+                while (login == false) {
                     System.out.print("Please Enter Password: ");
                     String pw = s.nextLine();
                     if (HRList.get(i).getStaffPw().equals(pw)) {
@@ -61,9 +61,9 @@ public class ModuleBFunction {
                 }
             }
         }
-        for(int i=0;i<adminList.size();i++){
-            if(adminList.get(i).getStaffID().equals(username)){
-                while(login==false){
+        for (int i = 0; i < adminList.size(); i++) {
+            if (adminList.get(i).getStaffID().equals(username)) {
+                while (login == false) {
                     System.out.print("Please Enter Password: ");
                     String pw = s.nextLine();
                     if (adminList.get(i).getStaffPw().equals(pw)) {
@@ -159,7 +159,9 @@ public class ModuleBFunction {
         Salary = s.nextDouble();
         s.nextLine();
         String WorkingStatus = "Working";
-        DeliveryMan DM = new DeliveryMan(0, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
+        String CurrentAvailable = "Not Yet Clock-In";
+        String CurrentLocation = "None";
+        DeliveryMan DM = new DeliveryMan(0, CurrentAvailable, CurrentLocation, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
         DM.calculateSalary();
         AddNewDeliveryMan(DM);
     }

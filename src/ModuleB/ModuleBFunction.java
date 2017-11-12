@@ -159,7 +159,9 @@ public class ModuleBFunction {
         Salary = s.nextDouble();
         s.nextLine();
         String WorkingStatus = "Working";
-        DeliveryMan DM = new DeliveryMan(0, ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
+        String CurrentAvailable = "Not Yet Clock-In";
+        String CurrentLocation = "None";
+        DeliveryMan DM = new DeliveryMan(0,CurrentAvailable,CurrentLocation ,ID, Pw, Name, IC, PhNo, Gender, Adds, Email, Position, WorkingStatus, Salary, 0);
         DM.calculateSalary();
         AddNewDeliveryMan(DM);
     }

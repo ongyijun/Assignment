@@ -205,19 +205,12 @@ public class Assignment {
                 case "1": {
                     B.DisplayDeliveryManRegistration(DMList.size());
                     DMList = B.getDeliveryMen();
-                    for (int i = 0; i < DMList.size(); i++) {
-                        System.out.printf("%s\n", DMList.get(i).getStaffID());
-                        System.out.printf("%s\n", DMList.get(i).getStaffPosition());
-                    }
                     HRMenu();
                     break;
                 }
                 case "2": {
                     B.DisplayAdminRegistration(adminList.size());
                     adminList = B.getAdminList();
-                    for (int i = 0; i < adminList.size(); i++) {
-                        System.out.printf("%s\n", adminList.get(i).getSalary());
-                    }
                     HRMenu();
                     break;
                 }
@@ -265,6 +258,7 @@ public class Assignment {
                 }
                 case "6": {
                     System.out.println("\n\n\n\n\n");
+                    loginStaff = null;
                     menu();
                     break;
                 }
@@ -289,7 +283,7 @@ public class Assignment {
         customer.add(new Customer("CU000001", "Miw Jin Le", "14,Taman Cantik,53300,Wangsa Maju,Kuala Lumpur", "Wangsa Maju", "0167897899", "970104079999", "1234567890"));
         order.add(new Orders(restaurant.get(0), customer.get(0), "OR000001", 0.00, 0.00, "1", 12, 45, 6, 11, 2017));
         orderdetail.add(new OrderDetail(order.get(0), food.get(0), 1));
-        DMList.add(new DeliveryMan(0, "Not Yet Clock-In", "None", "DM000001", "123456", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
+        DMList.add(new DeliveryMan(0, "Not Available", "None", "DM000001", "123456", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
         B.setDeliveryMen(DMList);
         HRList.add(new HR(1, "HR000001", "123456", "Ong Ong Jun", "970707-07-0707", "010-2255533", 'M', "Jalan Prima Setapak, KL", "OngOngJun@hotmail.com", "HR", "Working", 3500, 3750));
         B.setHRList(HRList);

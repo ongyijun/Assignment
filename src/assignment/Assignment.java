@@ -18,6 +18,7 @@ import java.util.Scanner;
  * @author ong
  */
 public class Assignment {
+
     private ModuleAFunction A = new ModuleAFunction();
     private ModuleBFunction B = new ModuleBFunction();
     private ModuleCFunction C = new ModuleCFunction();
@@ -67,7 +68,7 @@ public class Assignment {
                 }
                 case "4": {
                     boolean a = A.RestaurantLogin(restaurant);
-                    if(a){
+                    if (a) {
                         RestaurantMenu(restaurant);
                     }
                     break;
@@ -102,36 +103,36 @@ public class Assignment {
             }
         }
     }
-    
-    public void RestaurantMenu(List<Restaurant> restaurant){
+
+    public void RestaurantMenu(List<Restaurant> restaurant) {
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Add New Menu Items");
         System.out.println("2. Update Menu Item Details");
         System.out.println("3. Remove Menu Items");
         System.out.println("0. Log Out");
-        
+
         System.out.print("Option: ");
         int selection = sc.nextInt();
         sc.nextLine();
-        switch(selection){
-            case 1:{
+        switch (selection) {
+            case 1: {
                 System.out.println("Stay Tuned. Under Construction.");
                 break;
             }
-            case 2:{
+            case 2: {
                 System.out.println("Stay Tuned. Under Construction.");
                 break;
             }
-            case 3:{
+            case 3: {
                 System.out.println("Stay Tuned. Under Construction.");
                 break;
             }
-            case 0:{
+            case 0: {
                 System.out.println("Successfully Logout");
                 menu();
                 break;
             }
-            default:{
+            default: {
                 System.out.println("Error. Please key in again.");
                 RestaurantMenu(restaurant);
                 break;
@@ -144,7 +145,7 @@ public class Assignment {
         String selection = "0";
         java.util.Date date = new java.util.Date();
         java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Welcome Back, "+loginStaff.getStaffName()+"\nCurrent Date:"+dateFormat.format(date)+"\n");
+        System.out.println("Welcome Back, " + loginStaff.getStaffName() + "\nCurrent Date:" + dateFormat.format(date) + "\n");
         System.out.println("Please Select The Option Below");
         System.out.println("1. Add New Delivery Man");
         System.out.println("2. Add New Owner");
@@ -243,7 +244,7 @@ public class Assignment {
         customer.add(new Customer("CU000001", "Miw Jin Le", "14,Taman Cantik,53300,Wangsa Maju,Kuala Lumpur", "Wangsa Maju", "0167897899", "970104079999", "1234567890"));
         order.add(new Orders(restaurant.get(0), customer.get(0), "OR000001", 0.00, 0.00, "1", 12, 45, 6, 11, 2017));
         orderdetail.add(new OrderDetail(order.get(0), food.get(0), 1));
-        DMList.add(new DeliveryMan(0,"Not Yet Clock-In","None", "DM000001", "123456", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
+        DMList.add(new DeliveryMan(0, "Not Yet Clock-In", "None", "DM000001", "123456", "Ong Yi Jun", "971009-02-5213", "012-3456789", 'M', "2345 Lorong 3 Jalan ABC, 51020 KL", "OngYiJun@gmail.com", "Delivery Man", "Working", 3500, 3500));
         B.setDeliveryMen(DMList);
         HRList.add(new HR(1, "HR000001", "123456", "Ong Ong Jun", "970707-07-0707", "010-2255533", 'M', "Jalan Prima Setapak, KL", "OngOngJun@hotmail.com", "HR", "Working", 3500, 3750));
         B.setHRList(HRList);

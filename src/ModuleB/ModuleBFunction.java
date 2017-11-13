@@ -174,7 +174,7 @@ public class ModuleBFunction {
                 DeliveryMan DM = deliveryMen.get(i);
                 if(DM.getWorkingStatus().equals("Working")){
                 String choice = "0";
-                System.out.print("Choose A Reason\n 1. Retired\n 2.Resigned\n");
+                System.out.print("Choose A Reason\n 1. Retired\n 2. Resigned\n");
                 while (!choice.equals("1") && !choice.equals("2")) {
                     System.out.print("Your Choice: ");
                     choice = s.nextLine();
@@ -194,7 +194,8 @@ public class ModuleBFunction {
                     }
                 }
             }else{
-                System.out.println("Error. Delivery Man Already Not Working With Us!");
+                System.out.println("Error. Delivery Man Already Not Working With Us!\nPress Enter to continue...");
+                s.nextLine();
             }
         }
         }

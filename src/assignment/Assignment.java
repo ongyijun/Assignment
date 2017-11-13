@@ -69,7 +69,9 @@ public class Assignment {
                     break;
                 }
                 case "4": {
-                    boolean a = A.RestaurantLogin(restaurant);
+                    boolean a = false;
+                    a = A.RestaurantLogin(restaurant);
+                    System.out.println(a);
                     if (a) {
                         RestaurantMenu(restaurant);
                     }

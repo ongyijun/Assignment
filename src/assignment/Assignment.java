@@ -287,6 +287,8 @@ public class Assignment {
         B.setDeliveryMen(DMList);
         HRList.add(new HR(1, "HR000001", "123456", "Ong Ong Jun", "970707-07-0707", "010-2255533", 'M', "Jalan Prima Setapak, KL", "OngOngJun@hotmail.com", "HR", "Working", 3500, 3750));
         B.setHRList(HRList);
+        adminList.add(new Admin(0, "AD000001", "123456", "ABC", "123456678", "012-345678", 'M', "22A, Deaman Ap, KL", "E@e.com", "Admin", "Working", 0, 0));
+        B.setAdminList(adminList);
         A.setRestaurant(restaurant);
         menu();
     }
